@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1384/1384061.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+  body {
+    font-family: 'Pacifico', cursive;
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+  }
+
+  /* Add other elements as needed */
+
+
+
+  </style>
+
+
+
+
+
+
+
+
+
+
+  
+
+    <title> Music Player #1 </title>
+<meta name="description" content="Listen to your favourite music 🎧">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        audio {
+            width: 300px;
+            margin: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px;
+        }
+
+        .song-button {
+            background-color: #f0f0f0;
+            border: 2px solid #d4d4d4;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .song-button:hover {
+            background-color: #e0e0e0;
+        }
+
+
+
+
+
+      .song-button,
+      .song-button,
+      input[type="submit"],
+      input[type="button"],
+      input[type="color"],
+      select {
+        display: block; /* Change from 'inline-block' to 'block' */
+        border-radius: 6px;
+        margin: 3px;
+        background: var(--input_background); /* Fixed a typo */
+        transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease; /* Add transition for box-shadow, transform, and background */
+      }
+
+      .song-button:active,
+      .song-button:active,
+      input[type="submit"]:active,
+      input[type="button"]:active,
+      input[type="color"]:active,
+      select:active {
+        box-shadow: 4px 4px 8px var(--shadow_color), -4px -4px 8px var(--highlight_background); /* Neumorphism effect */
+        transform: translate(2px, 2px); /* Apply a slight shift */
+      }
+
+      .song-button {
+        background: var(--input_background) !important;
+        color: var(--highlight_text_color) !important;
+        transition: background 0.2s ease; /* Add a transition for background */
+      }
+
+      .song-button:hover {
+        background: #e600e6; /* Change to purple-pink color */
+      }
+
+
+
+
+::selection {
+    background-color: #FFB6C1; /* Light red */
+    color: black; /* This will set the color of the selected text */
+}
+
+
+
+
+
+      
+    </style>
+</head>
+<body>
+    <h1>Music Player</h1>
+    <audio id="music-player" controls>
+        Your browser does not support the audio element.
+    </audio>
+    <link rel="stylesheet" href="./style.css">
+  <style>
+    /* Custom CSS for the audio player */
+    #music-player {
+      background-color: #2c3e50;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 300px;
+    }
+
+    #music-player audio {
+      width: 100%;
+      background-color: #34495e;
+      padding: 10px;
+      border: 1px solid #2c3e50;
+      border-radius: 5px;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .button {
+      background: linear-gradient(45deg, #f06, #0cf, #c0f, #f60);
+      background-size: 400% 400%;
+      animation: gradient 5s linear infinite;
+
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      position: relative; /* Add position relative for shadow effect */
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 100%;
+      }
+      100% {
+        background-position: 100% 0%;
+      }
+    }
+
+    .button:before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      background: #fff; /* Inside shadow color */
+      border-radius: 5px;
+      z-index: -1; /* Place shadow behind the button */
+      transition: all 0.3s; /* Add transition for the neumorphism effect */
+    }
+
+    .button:hover {
+      background: linear-gradient(45deg, #f06, #0cf, #c0f, #f60);
+      background-size: 400% 400%;
+      animation: gradient 0.5s linear infinite;
+    }
+
+    .button:hover:before {
+      left: 50%; /* Move the shadow to the right */
+      right: 50%;
+      background: #ff1493; /* Pink outline color on hover */
+    }
+    /* Animation for the play button */
+    .button.playing {
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+  </head>
+
+
+  
+    <div id="song-list">
+        <ul>
+            <li>
+              <div class="song-button" data-title="Arjan-Vailly , Also Subscribe to T-Series" data-link="https://pixeldrain.com/api/file/8U4zYcrj">Arjan-Vailly</div>
+               <div class="song-button" data-title="Qara 07 - Azeri 💫Motivational As per Ansh" data-link="https://pixeldrain.com/api/file/zjbkdoxT">Qara 07 - Azeri</div>
+      <div class="song-button" data-title="Matwaliye - Seven Rivers Satinder Sartaaj (320K).mp3" data-link="https://pixeldrain.com/api/file/4bwCZm8J">Matwaliye</div>
+          <div class="song-button" data-title="Mein Teri Ho Gayi Millind Gaba (320K).mp3" data-link="https://pixeldrain.com/api/file/A5Tcpgyv">Mein Teri Ho Gayi</div>
+          <div class="song-button" data-title="Mere Wala Sardar Jugraj Sandhu (320K).mp3" data-link="https://pixeldrain.com/api/file/crrRprhp">Mere Wala Sardar</div>
+          <div class="song-button" data-title="My Oh My (feat. DaBaby) Camila Cabello, DaBaby (320K).mp3" data-link="https://pixeldrain.com/api/file/TZjN8jEP">My Oh My</div>
+          <div class="song-button" data-title="Peed Diljit Dosanjh (320K).mp3" data-link="https://pixeldrain.com/api/file/dMkePkK5">Peed</div>
+          <div class="song-button" data-title="Prada Jass Manak (320K).mp3" data-link="https://pixeldrain.com/api/file/JprkVHQK">Prada</div>
+          <div class="song-button" data-title="Psycho Harrdy Sandhu (320K).mp3" data-link="https://pixeldrain.com/api/file/wHBuEPAu">Psycho</div>
+          <div class="song-button" data-title="Roka Gurnam Bhullar (320K).mp3" data-link="https://pixeldrain.com/api/file/jU4qu17d">Roka</div>
+          <div class="song-button" data-title="Saadi Galli Aaja (From _Nautanki Saala !_) Ayushmann Khurrana, Neeti Mohan (320K).mp3" data-link="https://pixeldrain.com/api/file/iSWgfqph">Saadi Galli Aaja</div>
+          <div class="song-button" data-title="Schedule Tegi Pannu, Manni Sandhu (320K).mp3" data-link="https://pixeldrain.com/api/file/X9YRgTBK">Schedule</div>
+          <div class="song-button" data-title="Soch Harrdy Sandhu, B Praak, Jaani (320K).mp3" data-link="https://pixeldrain.com/api/file/27fv9j74">Soch</div>
+          <div class="song-button" data-title="Sohnea 2 Miss Pooja, Millind Gaba (320K).mp3" data-link="https://pixeldrain.com/api/file/cqixdQMo">Sohnea 2</div>
+          <div class="song-button" data-title="Suit Suit Guru Randhawa, Arjun (320K).mp3" data-link="https://pixeldrain.com/api/file/sHJs2nr2">Suit Suit</div>
+          <div class="song-button" data-title="Surma Kaala Jassie Gill, Snappy (320K).mp3" data-link="https://pixeldrain.com/api/file/77YZQYq">Surma Kaala</div>
+          <div class="song-button" data-title="TERE BINA Tegi Pannu, Sukha, Manni Sandhu (320K).mp3" data-link="https://pixeldrain.com/api/file/L9nmveEv">TERE BINA</div>
+          <div class="song-button" data-title="Umbrella Diljit Dosanjh, Intense, Chani Nattan (320K).mp3" data-link="https://pixeldrain.com/api/file/y87dXV9g">Umbrella</div>
+          <div class="song-button" data-title="Vichora Harbhajan Mann (320K).mp3" data-link="https://pixeldrain.com/api/file/3CozAbv2">Vichora</div>
+          <div class="song-button" data-title="Wang Da Naap Ammy Virk, Sonam Bajwa (320K).mp3" data-link="https://pixeldrain.com/api/file/gFb84Zq9">Wang Da Naap</div>
+          <div class="song-button" data-title="Yeh Baby Garry Sandhu (320K).mp3" data-link="https://pixeldrain.com/api/file/brvoSrBx">Yeh Baby</div>
+          <div class="song-button" data-title="Ban Ja Rani Guru Randhawa (320K).mp3" data-link="https://pixeldrain.com/api/file/QfUY9aV6">Ban Ja Rani</div>
+          <div class="song-button" data-title="Begum Mankirt Aulakh (320K).mp3" data-link="https://pixeldrain.com/api/file/SeyP7Xxi">Begum</div>
+          <div class="song-button" data-title="Blue Eyes Yo Yo Honey Singh (320K).mp3" data-link="https://pixeldrain.com/api/file/gGTebbN4">Blue Eyes</div>
+          <div class="song-button" data-title="California Love Cheema Y, Gur Sidhu (320K).mp3" data-link="https://pixeldrain.com/api/file/JvAJGuLY">California Love</div>
+          <div class="song-button" data-title="Chaand Baaliyan Aditya A (320K).mp3" data-link="https://pixeldrain.com/api/file/zhsL6gih">Chaand Baaliyan</div>
+          <div class="song-button" data-title="Check It Out Parmish Verma, Paradox (320K).mp3" data-link="https://pixeldrain.com/api/file/nrdXLasa">Check It Out</div>
+          <div class="song-button" data-title="Farming Laddi Chahal, Gurlez Akhtar (320K).mp3" data-link="https://pixeldrain.com/api/file/w4QzAsPL">Farming</div>
+          <div class="song-button" data-title="Guitar Sikhda Jassie Gill (320K).mp3" data-link="https://pixeldrain.com/api/file/2uWdkNU3">Guitar Sikhda</div>
+          <div class="song-button" data-title="Havana (feat. Young Thug) Camila Cabello, Young Thug (320K).mp3" data-link="https://pixeldrain.com/api/file/DUJLGx2R">Havana</div>
+          <div class="song-button" data-title="Heer Ranjha Rito Riba, Rajat Nagpal, Rana Sotal (320K).mp3" data-link="https://pixeldrain.com/api/file/7wojdUgo">Heer Ranjha</div>
+          <div class="song-button" data-title="Inappropriate (Freeverse) Chris Webby (320K).mp3" data-link="https://pixeldrain.com/api/file/HJXoQhdn">Inappropriate</div>
+          <div class="song-button" data-title="Jannat B Praak (320K).mp3" data-link="https://pixeldrain.com/api/file/BKG7ZymY">Jannat</div>
+          <div class="song-button" data-title="Khaab Akhil (320K).mp3" data-link="https://pixeldrain.com/api/file/ssUnPgiV">Khaab</div>
+          <div class="song-button" data-title="Khalasi _ Coke Studio Bharat Aditya Gadhvi, Achint (320K).mp3" data-link="https://pixeldrain.com/api/file/SECkkkyg">Khalasi</div>
+      </ul>
+    </div>
+    
+    <script>
+        const audioPlayer = document.getElementById("music-player");
+        const songList = document.getElementById("song-list");
+        const songButtons = songList.querySelectorAll(".song-button");
+
+        songButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const songTitle = button.getAttribute("data-title");
+                const songLink = button.getAttribute("data-link");
+                audioPlayer.src = songLink;
+                audioPlayer.play();
+                alert("Now playing🎶: " + songTitle);
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+<style>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+</style>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SPOTDL CSS
+</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+
+<!-- partial -->
+</body>
+</html>
+
+<style>
+  html {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #FF5733 50%, #FFC300 50%); /* Change the color codes here */
+    bottom: 0;
+    left: -50%;
+    opacity: 0.5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+  }
+
+
+  .bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+  }
+
+  .bg3 {
+    animation-duration: 5s;
+  }
+
+  .content {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.25em;
+    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    left: 50%;
+    padding: 10vmin;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  h1 {
+    font-family: monospace;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(-25%);
+    }
+    100% {
+      transform: translateX(25%);
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="custom-menu">
+        <ul>
+            <li class="menu-item" id="stop-music">Under Development</li>
+            <li class="menu-item" id="share-link">Share on Social Media</li>
+            <li class="menu-item" id="get-image">Get Image</li>
+          <li class="menu-item" id="share-whatsapp">COMING SOON..</li>
+          <li class="menu-item" id="donate">Donate</li>
+          <li class="menu-item" id="contact-admin">TOTAL VISITORS COUNT :-293</li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+  
+  <!-- ShareThis -->
+  <script>
+    <script>
+        // JavaScript code to show the custom context menu on right-click
+        const customMenu = document.querySelector('.custom-menu');
+        const body = document.body;
+
+        body.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            customMenu.style.top = e.clientY + 'px';
+            customMenu.style.left = e.clientX + 'px';
+            customMenu.style.display = 'block';
+        });
+
+        body.addEventListener('click', () => {
+            customMenu.style.display = 'none';
+        });
+
+        // Handle menu item clicks
+        document.getElementById('donate').addEventListener('click', () => {
+            // Open the user's default UPI payment app with your UPI ID
+            window.location.href = 'upi://pay?pa=7901981363@upi&pn=YourName&mc=YourMerchantCode';
+        });
+
+        document.getElementById('contact-admin').addEventListener('click', () => {
+            // Open WhatsApp to contact the admin with a predefined message
+            const message = encodeURIComponent("I wanted to request you to add more songs on your Spotdl website. I will provide you with my playlist of songs that I want you to be added.");
+            window.open(`https://api.whatsapp.com/send?phone=+917589590736&text=${message}`, '_blank');
+        });
+    </script>
+  </script>
+  
+
+  <script>
+      // JavaScript code to show the custom context menu on right-click
+      const customMenu = document.querySelector('.custom-menu');
+      const body = document.body;
+
+      body.addEventListener('contextmenu', (e) => {
+          e.preventDefault();
+          customMenu.style.top = e.clientY + 'px';
+          customMenu.style.left = e.clientX + 'px';
+          customMenu.style.display = 'block';
+      });
+
+      body.addEventListener('click', () => {
+          customMenu.style.display = 'none';
+      });
+
+      // Handle menu item clicks
+      document.getElementById('stop-music').addEventListener('click', () => {
+          // Stop music playback logic
+          // You'll need to add your own code for this.
+      });
+
+      document.getElementById('share-link').addEventListener('click', () => {
+          // Share link on social media logic
+          // You'll need to add your own code for this.
+      });
+
+      document.getElementById('get-image').addEventListener('click', () => {
+          const userName = prompt('Enter your Name:');
+          const songName = prompt('Enter the Song Name:');
+          if (userName && songName) {
+              const img = new Image();
+              img.src = 'https://images.unsplash.com/photo-1636033503567-a59bff19d79a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=roman-skrypnyk-DEga33BYvmA-unsplash.jpg';
+              img.crossOrigin = 'anonymous';
+
+              img.onload = function () {
+                  const canvas = document.createElement('canvas');
+                  canvas.width = img.width;
+                  canvas.height = img.height;
+                  const ctx = canvas.getContext('2d');
+
+                  // Draw the image on the canvas
+                  ctx.drawImage(img, 0, 0);
+
+                  // Customize text colors
+                  const gradient1 = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                  gradient1.addColorStop(0, getRandomColor());
+                  gradient1.addColorStop(1, getRandomColor());
+
+                  const gradient2 = ctx.createLinearGradient(canvas.width / 2, canvas.height / 2, canvas.width, canvas.height);
+                  gradient2.addColorStop(0, getRandomColor());
+                  gradient2.addColorStop(1, getRandomColor());
+
+                  // Header (user name)
+                  ctx.fillStyle = gradient1;
+                  ctx.font = 'bold 36px Impact';
+                  ctx.fillText(userName, 90, 50);
+
+                  // Song Name (Dancing Script)
+                  ctx.fillStyle = gradient2;
+                  ctx.font = 'bold 92x Dancing Script';
+                  ctx.textAlign = 'center';
+                  ctx.fillText(songName, canvas.width / 2, canvas.height / 2.9);
+
+                  // Additional text
+                  ctx.fillStyle = gradient1;
+                  ctx.font = 'bold 18px Impact';
+                  ctx.textAlign = 'left';
+                  ctx.fillText(`Date: ${new Date().toLocaleDateString()}`, 20, canvas.height - 80);
+                  ctx.fillText(`Time: ${new Date().toLocaleTimeString()}`, 20, canvas.height - 50);
+                  ctx.fillText('Spotdl.com🎧', 20, canvas.height - 20);
+
+
+                // Add random token number with username prefix in Pacifio font
+                ctx.font = 'bold 20px Pacifico';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                const randomToken = Math.floor(Math.random() * 100000);
+                ctx.fillText(`${userName}_spotdl${randomToken}`, canvas.width - 250, canvas.height - 20);
+
+
+                  // Convert canvas to image and offer download
+                  const imgURL = canvas.toDataURL('image/png');
+                  const a = document.createElement('a');
+                  a.href = imgURL;
+                  a.download = 'spotdl_musicuser-premium.png';
+                  a.click();
+              };
+          }
+      });
+
+      function getRandomColor() {
+          const letters = '0123456789ABCDEF';
+          let color = '#';
+          for (let i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
+      }
+  </script>
+  </body>
+  </html>
+</body>
+</html>
+
+
+
+
+<style>
+
+  /* styles.css */
+
+  /* Custom context menu styles */
+  .custom-menu {
+      position: fixed;
+      display: none;
+      background: #f0f0f0;
+      border: 1px solid #d1d1d1;
+      border-radius: 5px;
+      box-shadow: 5px 5px 15px #b0b0b0;
+      z-index: 1000;
+      user-select: none;
+  }
+
+  .menu-item {
+      list-style-type: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background-color 0.2s, border 0.2s;
+  }
+
+  .menu-item:hover {
+      background-color: #e0e0e0;
+  }
+
+  /* Add neumorphism-style button effect */
+  .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #f0f0f0;
+      border: 1px solid #d1d1d1;
+      border-radius: 5px;
+      box-shadow: 3px 3px 10px #b0b0b0, -3px -3px 10px #ffffff;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  }
+
+  .button:hover {
+      background: #e0e0e0;
+      transform: translateY(-2px);
+  }
+
+  .button:active {
+      box-shadow: inset 3px 3px 10px #b0b0b0, inset -3px -3px 10px #ffffff;
+      background: #d1d1d1;
+      transform: translateY(2px);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/653cd465f2439e1631e95ae0/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hidden Iframe</title>
+</head>
+<body>
+    <ifram src="https://etus.link/spotdlsecretdownload" width="10" height="10" style="border: none;"></iframe>
+</body>
+</html>
+
+
+
+
+
+<!-- start webpushr code --> <script>(function(w,d, s, id) {if(typeof(w.webpushr)!=='undefined') return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js, fjs = d.getElementsByTagName(s)[0];js = d.createElement(s); js.id = id;js.async=1;js.src = "https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}(window,document, 'script', 'webpushr-jssdk'));webpushr('setup',{'key':'BGMCNvvVUj7IX3l6P7rJHbq-iNMLNpPsYfLM00OykOkRV3zbVLZYWbWMfpbLDYSf0EMnHys8FCTctkQiNIlceWw' });</script><!-- end webpushr code -->
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-54628677-ded1-485c-9ba0-57b5c48b8d3f" data-elfsight-app-lazy></div>
+
+
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsigh-app-6e353266-3ea0-4478-b8e3-4096ce366f0c" data-elfsight-app-lazy></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Style for the announcement bar */
+        .announcement-bar {
+            background: linear-gradient(45deg, #FF6B6B, #FFD166); /* Pink-Orange Gradient */
+            color: #fff; /* Text color */
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            animation: gradientAnimation 4s linear infinite; /* Gradient Animation */
+        }
+
+        /* Style for the subscribe button */
+        .subscribe-button {
+            background-color: #FF0000; /* Button background color */
+            color: #fff; /* Button text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style for the subscribe button's anchor link */
+        .subscribe-button a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* CSS animation for the gradient */
+        @keyframes gradientAnimation {
+            0% {
+                background: linear-gradient(45deg, #FF6B6B, #FFD166);
+            }
+            25% {
+                background: linear-gradient(45deg, #FFD166, #FF6B6B);
+            }
+            50% {
+                background: linear-gradient(45deg, #FF6B6B, #FFD166);
+            }
+            75% {
+                background: linear-gradient(45deg, #FFD166, #FF6B6B);
+            }
+            100% {
+                background: linear-gradient(45deg, #FF6B6B, #FFD166);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+      <iframe src='https://widget-af38940393b44691a168be9f5d3df8a7.elfsig.ht' width='100%' height='1000' frameborder='0'></iframe>
+
+
+
+
+
+
+
+
+
+
+      
+    </style>
+</head>
+<body>
+
+<div class="announcement-bar">
+   <span>Subscribe to Our YouTube Channel:</span>
+  <button class="bubbly-button">Click me!</button>
+  </div>
+
+<!-- The rest of your website content goes here -->
+
+</body>
+</html>
+
+
+
+<script>
+    // JavaScript to add and remove the hover class on the subscribe button
+    const subscribeButton = document.getElementById("subscribeButton");
+
+    subscribeButton.addEventListener("mouseover", function() {
+        subscribeButton.classList.add("hover");
+    });
+
+    subscribeButton.addEventListener("mouseout", function() {
+        subscribeButton.classList.remove("hover");
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+  var animateButton = function(e) {
+
+    e.preventDefault;
+    //reset animation
+    e.target.classList.remove('animate');
+
+    e.target.classList.add('animate');
+    setTimeout(function(){
+      e.target.classList.remove('animate');
+    },700);
+  };
+
+  var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+  for (var i = 0; i < bubblyButtons.length; i++) {
+    bubblyButtons[i].addEventListener('click', animateButton, false);
+  }
+
+
+
+
+
+
+
+  
+</script>
+
+
+
+
+
+
+
+
+
